@@ -13,7 +13,10 @@ jobs:
       versionSpec: '8.x'
     displayName: 'Install Node.js'
   - script: |
-      sudo apt-get -qq install g++-multilib
+      sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+      sudo apt-get -qq update
+      sudo apt-get -qq install g++-4.8 g++-multilib
+      export CXX=g++-4.8
       npm i
     displayName: 'Install dependencies and build'
   - script: |
